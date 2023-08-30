@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des produits {% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1>Gestion des produits </h1>
+   
+     {# {
+        $builder
+            ->add('titre')
+            ->add('description')
+            ->add('couleur')
+            ->add('taille')
+            ->add('collection')
+            ->add('photo')
+            ->add('prix')
+            ->add('stock')
+            ->add('date_enregistrement')
+        ;
+    } #}
+    {{ form(formProduit)}}
+    {# ! form() est une fonction twig permettant d'afficher un formulaire entièrement #}
+
+    {# {{form_start(formProduit)}} #}
+    {# {{form_widget(formProduit.)}} #}
+{#  #}
+    {# {{form_end(formProduit)}} #}
+{% endblock %}
