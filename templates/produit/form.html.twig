@@ -7,24 +7,15 @@
 <div class="container">
     <h1>Gestion des produits </h1>
    
-     {# {
-        $builder
-            ->add('titre')
-            ->add('description')
-            ->add('couleur')
-            ->add('taille')
-            ->add('collection')
-            ->add('photo')
-            ->add('prix')
-            ->add('stock')
-            ->add('date_enregistrement')
-        ;
-    } #}
+   {{ form_start(formProduit) }}
+   
     {{ form(formProduit)}}
-    {# ! form() est une fonction twig permettant d'afficher un formulaire entièrement #}
 
-    {# {{form_start(formProduit)}} #}
-    {# {{form_widget(formProduit.)}} #}
-{#  #}
+
+    {# ! form() est une fonction twig permettant d'afficher un formulaire entièrement #}
+<button type='submit' class="btn btn-primary mt-2">Enregistrer </button>
+   {{ form_end(formProduit) }}
+
     {# {{form_end(formProduit)}} #}
 {% endblock %}
+
