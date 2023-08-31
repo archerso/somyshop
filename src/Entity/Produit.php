@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ProduitRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
 class Produit
@@ -14,30 +15,40 @@ class Produit
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Assert\Length(min:5, max: 50, minMessage: "Pas assez de caractère , il faut au moins {{ limit }} caractères")]
+    #[Assert\NotBlank(message: 'Ce champ ne peut pas être vide')]
     #[ORM\Column(length: 255)]
     private ?string $titre = null;
 
+    #[Assert\NotBlank(message: 'Ce champ ne peut pas être vide')]
     #[ORM\Column(type: Types::TEXT)]
     private ?string $description = null;
 
+    #[Assert\NotBlank(message: 'Ce champ ne peut pas être vide')]
     #[ORM\Column(length: 50)]
     private ?string $couleur = null;
 
+    #[Assert\NotBlank(message: 'Ce champ ne peut pas être vide')]
     #[ORM\Column(length: 50)]
     private ?string $taille = null;
 
+    #[Assert\NotBlank(message: 'Ce champ ne peut pas être vide')]
     #[ORM\Column(length: 255)]
     private ?string $collection = null;
 
+    #[Assert\NotBlank(message: 'Ce champ ne peut pas être vide')]
     #[ORM\Column(length: 255)]
     private ?string $photo = null;
 
+    #[Assert\NotBlank(message: 'Ce champ ne peut pas être vide')]
     #[ORM\Column]
     private ?int $prix = null;
 
+    #[Assert\NotBlank(message: 'Ce champ ne peut pas être vide')]
     #[ORM\Column]
     private ?int $stock = null;
 
+    #[Assert\NotBlank(message: 'Ce champ ne peut pas être vide')]
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date_enregistrement = null;
 

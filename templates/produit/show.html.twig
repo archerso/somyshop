@@ -3,17 +3,32 @@
 {% block title %}Hello ProduitController!{% endblock %}
 
 {% block body %}
+  <section class="row produit">
+  {% for produit in produits %}
+  {#! produit est une variable de reception : elle receptionne un article par tour de boucle #}
 
-<div class="container">
-    <h1>Hello PRODUIT </h1>
-    <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
-  <div class="card-header">Header</div>
-  <div class="card-body">
-    <h4 class="card-title">Info card title</h4>
-    <p class="width 50px">PHOTO</p>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-  </div>
+  {#! produit est un tableau envoyé depuis la méthode index a notre template #}
+    <article class="col-md-4 mx-auto" text-center border border-dark my-3 p-3 mr-1> 
+    <h2>{{ produit.titre}}</h2>
+    <div class="metadata"> En vente depuis le {{ article.createdAt|date('d/m/Y ')}}
+    {#! date est un filtre twig : il permet de convertir un objet Datetime en une chaine de caractère #}
 
-
-</div>
+    <div class="content">
+      <img src="{{ produit.photo}}" alt=""> {{ produit.content|raw}}
+      {#! le raw est un filte : il permet d'interpréter les balises html #}
+    <p>{{ produit.titre}}</p>
+    <p>{{ produit.description}}</p>
+    <p>{{ produit.couleur}}</p>
+    <p>{{ produit.taille}}</p>
+    <p>{{ produit.collection}}</p>
+    <p>{{ produit.prix}}</p>
+  <a href="{{ path('produit_show' , {id: produit.id })}}" class="btn btn-primary">produit suivant</a>
+  {#! path() permet de generer un lien vers une page #}
+  {#! cette fonction prend en 1 er argument le nom de la route (name: 'nomDelaRoute' qui est declarer dans le controller) #}
+    </div>
+    </div>
+    </article>
+    
+  {% endfor %}
+  </section>
 {% endblock %}

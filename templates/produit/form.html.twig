@@ -5,17 +5,34 @@
 {% block body %}
 
 <div class="container">
-    <h1>Gestion des produits </h1>
+    <h1> 
+    {% if editMode %}
+    Modification de l'article
+    {% else %}
+        Création d'un article
+    {% endif %}
+   </h1>
+   {{ form_start(formProduit , {
+    attr:{
+        novalidate: 'novalidate',
+    }
+   }) }}
+    {{ form_start(formProduit) }}
+    {{ form_row(formProduit.titre) }}
+   {{ form_row(formProduit.description) }}
+   {{ form_row(formProduit.couleur) }}
+   {{ form_row(formProduit.taille) }}
+   {{ form_row(formProduit.photo) }}
+   {{ form_row(formProduit.collection) }}
+   {{ form_row(formProduit.prix) }}
+   {{ form_row(formProduit.stock) }} 
+   {{ form_row(formProduit.date_enregistrement) }} 
    
-   {{ form_start(formProduit) }}
    
-    {{ form(formProduit)}}
-
-
     {# ! form() est une fonction twig permettant d'afficher un formulaire entièrement #}
 <button type='submit' class="btn btn-primary mt-2">Enregistrer </button>
+
+
    {{ form_end(formProduit) }}
 
-    {# {{form_end(formProduit)}} #}
 {% endblock %}
-
