@@ -1,17 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gestion des produits {% endblock %}
+{% block title %}
+{# Gestion des produits #}
+{% if editMode %}
+Modifier produit
+{% else %}
+    Ajouter articleproduit
+{% endif %}
+
+ {% endblock %}
 
 {% block body %}
-
-<div class="container">
-    <h1> 
+<h1 class="text-center my-4">
+     
     {% if editMode %}
-    Modification de l'article
+    Modification l'article
     {% else %}
-        Création d'un article
+        Ajouter d'un article
     {% endif %}
    </h1>
+<div class="container">
    {{ form_start(formProduit , {
     attr:{
         novalidate: 'novalidate',
@@ -28,7 +36,7 @@
    {{ form_row(formProduit.stock) }} 
    {{ form_row(formProduit.date_enregistrement) }} 
    
-   
+     
     {# ! form() est une fonction twig permettant d'afficher un formulaire entièrement #}
 <button type='submit' class="btn btn-primary mt-2">Enregistrer </button>
 

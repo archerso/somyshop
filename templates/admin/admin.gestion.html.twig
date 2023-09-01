@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des articles{% endblock %}
+
+{% block body %}
+<h1 class="text-center my-4">Gestion des articles</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6"><a href="{{ path('admin')}}" class="btn btn-info my-2">Retour Backoffice</a></div>
+
+        <div>
+        <table class="table table-dark">
+            <thead>
+                <tr>   
+                    <th>#</th>
+                    <th>titre</th>
+                    <th>description</th>
+                    <th>couleur</th>
+                    <th>taille</th>
+                    <th>photo</th>
+                    <th>.collection</th>
+                    <th>prix</th>
+                    <th>stock</th>
+                    <th>date_enregistrement</th>
+                    <th>option</th>
+                    
+                </tr>
+            </thead>
+              
+   
+             <tbody>
+             {% for produit in produits %}
+                
+                <tr>   
+                    <td>#</td>
+                    <td>formProduit.titre</td>
+                    <td>formProduit.description</td>
+                    <td>formProduit.couleur</td>
+                    <td>formProduit.taille</td>
+                    <td><img src="{{formProduit.photo}}" alt="" width="50"></td>
+                    <td>formProduit.collection</td>
+                    <td>formProduit.prix</td>
+                    <td>formProduit.stock</td>
+                    <td>formProduit.date_enregistrement</td>
+                    <td>
+                        <a href="{{ path('admin_produit_update', {id: produit.id})}}" class="text-warning">modifier</a>
+                        <a href="{{ path('admin_produit_update', {id: produit.id})}}" class="text-warning">delete</a>
+                     </td>
+                    
+                </tr>
+             {% endfor %}
+            </tbody>
+            
+        </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

@@ -75,6 +75,7 @@ class ProduitController extends AbstractController
             //* sinon editMode = 1
         ]);
     }
+    
    
 }
 
