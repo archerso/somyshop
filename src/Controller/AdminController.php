@@ -12,7 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class AdminController extends AbstractController
 {
-    #[Route('/admin', name: 'app_admin')]
+    #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
         return $this->render('admin/index.html.twig', [
@@ -23,8 +23,8 @@ class AdminController extends AbstractController
     public function gestionProduit(ProduitRepository $repo)
     {
         $produit = $repo->findAll();
-        return $this->render('admin/gestionProduit.html.twig', [
-            'produit' => $produit
+        return $this->render('admin/admin.gestion.html.twig', [
+            'produits' => $produit
             
         ]);
     }
