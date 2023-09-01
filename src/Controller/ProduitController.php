@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ProduitController extends AbstractController
 {
-    #[Route('/produit', name: 'app_produit')]
+    #[Route('/', name: 'app_produit')]
     // pour recupérer en bdd les articles nous avon besoin d'un repository
     // pour faire la manipulation nous avons besoin d'un manager
     public function index(ProduitRepository $repo): Response
@@ -24,7 +24,7 @@ class ProduitController extends AbstractController
         $produit = $repo->findAll();
         // ! j'utilise la méthode findAll pour récupérer tous les articles en BDD
         return $this->render('produit/index.html.twig',[
-        'produit' => $produit, //! j'envoie les articles au templates
+        'produits' => $produit, //! j'envoie les articles au templates
     ]);
         // return $this->render('produit/index.html.twig', [
         //     'controller_name' => 'ProduitController',
@@ -34,24 +34,23 @@ class ProduitController extends AbstractController
     #[Route('/produit', name: 'home')]
     public function home(): Response
     {
-        return $this->render('produit/home.html.twig', [
-            'homeController_name' => 'ProduitController',
-        ]);
+        return $this->render('produit/home.html.twig');
     }
 
     #[Route('/produit/show/{id}', name: 'produit_show')]
+    #[Route('/produit/show', name: 'produit_show')]
     //! id est en parametre de route, ce sera l'id de l'article
     public function show(Produit $produit) 
     //! en passant un objet produit a la methode, symfony conprend qu'il doit
     //! récuperer dans la bdd produit correspondant à l'id dans la route
     {
         return $this->render('produit/show.html.twig', [
-            'produit' => $produit //!j'envoie le produit au template  
+            'produits' => $produit //!j'envoie le produit au template  
         ]);
     }
 
     #[Route('/produit/form', name: 'produit_form')]
-    #[Route("/produit/edit/{id}" , name: "produit_edit")]
+    // #[Route("/produit/edit/{id}" , name: "produit_edit")]
     public function form(Request $request, EntityManagerInterface $manager, Produit $produit = null) 
     //! la class Request contient les données véhiculées par les superglobales
     {

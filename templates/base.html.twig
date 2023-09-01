@@ -22,7 +22,7 @@
     <div class="collapse navbar-collapse" id="navbarColor01">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="#">Accueil et panier
+          <a class="nav-link active" href="{{ path('home')}}">Accueil et panier
             <span class="visually-hidden">(current)</span>
           </a>
         </li>
@@ -30,7 +30,7 @@
         {#  !path() permet de générer un lien vers une page #}
         {#  ! cette fonction prend en 1 er argument le nom de la route ( name qui est déclarer dans le controller #}
 
-          <a class="nav-link" href="{{ path('produit_show')}}">Notre collection de t-shirt</a>
+          <a class="nav-link" href="{{ path('app_produit')}}">Notre collection de t-shirt</a>
         </li>
         
         <li class="nav-item">

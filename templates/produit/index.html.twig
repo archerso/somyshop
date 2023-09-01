@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProduitController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
   <section class="row produit">
@@ -10,11 +10,11 @@
   {#! produit est un tableau envoyé depuis la méthode index a notre template #}
     <article class="col-md-4 mx-auto" text-center border border-dark my-3 p-3 mr-1> 
     <h2>{{ produit.titre}}</h2>
-    <div class="metadata"> En vente depuis le {{ article.createdAt|date('d/m/Y ')}}
+    <div class="metadata"> En vente depuis le {{ produit.dateenregistrement|date('d/m/Y ')}}
     {#! date est un filtre twig : il permet de convertir un objet Datetime en une chaine de caractère #}
 
     <div class="content">
-      <img src="{{ produit.photo}}" alt=""> {{ produit.content|raw}}
+      <img src="{{ produit.photo}}" alt=""> 
       {#! le raw est un filte : il permet d'interpréter les balises html #}
     <p>{{ produit.titre}}</p>
     <p>{{ produit.description}}</p>
@@ -22,7 +22,7 @@
     <p>{{ produit.taille}}</p>
     <p>{{ produit.collection}}</p>
     <p>{{ produit.prix}}</p>
-  <a href="{{ path('produit_show')}}" class="btn btn-primary">produit suivant</a>
+  <a href="{{ path('produit_show' ,{id: produit.id})}}" class="btn btn-primary">produit suivant</a>
   {#! path() permet de generer un lien vers une page #}
   {#! cette fonction prend en 1 er argument le nom de la route (name: 'nomDelaRoute' qui est declarer dans le controller) #}
     </div>
